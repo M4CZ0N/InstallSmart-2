@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kontakt | InstalSmart</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="images/logo-favicon.ico" type="image/x-icon">
+  
+  <style>
+    /* Styl dla dwukolumnowego formularza z obrazem */
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+      margin-top: 30px;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 100%;
+    }
+
+    .contact-form label {
+      display: flex;
+      flex-direction: column;
+      font-weight: bold;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%; /* wszystkie pola mają pełną szerokość formularza */
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+
+    .contact-form button {
+      width: 100%; /* przycisk nie rozciąga się na całą szerokość */
+      padding: 10px 20px;
+      background-color: #005fa3;
+      color: #fff;
+      border-radius: 5px;
+      border: none;
+      font-family: inherit; /* dopasowuje czcionkę do pozostałych przycisków */
+      font-size: 1rem;      /* taki sam rozmiar jak przycisk powrotu */
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .contact-form button:hover {
+      background-color: #004d85;
+    }
+
+    .contact-image {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    @media (max-width: 768px) {
+      .contact-wrapper {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-image {
+        margin-top: 20px;
+        width: 100%;
+        height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <section class="hero">
+    <img src="images/logo.png" alt="Kontakt z InstalSmart" class="hero-img">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Kontakt</h1>
+      <p>Masz pytania lub chcesz omówić projekt? Skontaktuj się z nami przez formularz lub telefonicznie.</p>
+    </div>
+  </section>
+
+  <main class="main-content container">
+    <section class="service-details">
+      <h2>Formularz kontaktowy</h2>
+      <div class="contact-wrapper">
+        <form class="contact-form" action="mailto:piotrtargosz15@gmail.com" method="post" enctype="text/plain">
+          <label>
+            Imię i nazwisko:
+            <input type="text" name="name" required>
+          </label>
+          <label>
+            Email:
+            <input type="email" name="email" required>
+          </label>
+          <label>
+            Telefon:
+            <input type="tel" name="phone">
+          </label>
+          <label>
+            Wiadomość:
+            <textarea name="message" rows="6" required></textarea>
+          </label>
+          <button type="submit" class="btn">Wyślij</button>
+        </form>
+        <img src="images/kontakt.jpg" alt="Kontakt z InstalSmart zdjęcie" class="contact-image">
+      </div>
+    </section>
+
+    <section class="cta">
+        <h2>Alternatywne sposoby kontaktu</h2>
+        <p>Możesz też zadzwonić lub napisać maila:</p>
+        <p>📞 <a href="tel:+48535150597" class="meta-link">+48 535 150 597</a></p>
+        <p>✉️ <a href="mailto:piotrtargosz15@gmail.com" class="meta-link">piotrtargosz15@gmail.com</a></p>
+        <a class="btn" href="index.html">Powrót na stronę główną</a>
+    </section>
+  </main>
+
+  <div id="site-footer" class="footer-placeholder"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

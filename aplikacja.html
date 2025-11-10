@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pełna aplikacja i inteligentna kontrola — Loxone | InstalSmart</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="images/logo-favicon.ico" type="image/x-icon">
+  <style>
+    body { font-family: "Helvetica Neue", Arial, sans-serif; color:#111; margin:0; background:#fff; }
+    .container { max-width:1100px; margin:0 auto; padding:40px 20px; }
+    .hero { position:relative; height:360px; overflow:hidden; display:flex; align-items:center; justify-content:center; background:#f5f5f5; }
+    .hero-img { position:absolute; left:0; top:0; width:100%; height:100%; object-fit:cover; filter:brightness(0.6); }
+    .hero-overlay { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0.15), rgba(0,0,0,0.3)); }
+    .hero-content { position:relative; z-index:2; color:#fff; text-align:center; padding:0 20px; }
+    .hero-content h1 { margin:0 0 10px; font-size:34px; letter-spacing:0.2px; }
+    .hero-content p { margin:0; opacity:0.95; }
+
+    .feature-detail, .mode-block { margin-top:30px; }
+    .checklist { list-style: none; padding:0; margin:10px 0 0 0; }
+    .checklist li { padding:6px 0; position:relative; padding-left:22px; }
+    .checklist li:before { content:'•'; position:absolute; left:0; color:#2f9e44; font-weight:bold; }
+
+    .app-screens { display:grid; grid-template-columns: repeat(3,1fr); gap:18px; margin-top:20px; }
+    .app-screens img { width:100%; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.08); }
+
+    .media-row { display:grid; grid-template-columns: 1fr 1fr; gap:24px; margin-top:40px; align-items:center; }
+    .media-row img { width:100%; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.08); }
+
+    .feature-grid { display:grid; grid-template-columns: repeat(3,1fr); gap:30px; margin-top:40px; }
+    .feature-card { padding:22px; border-radius:12px; background:#fafafa; box-shadow:0 4px 12px rgba(0,0,0,0.04); min-height:120px; }
+    .feature-card h4 { margin:0 0 8px; font-size:18px; }
+    .feature-card p { margin:0; color:#333; line-height:1.4; }
+
+    .cta { text-align:center; padding:40px 20px; background:#fff; margin-top:40px; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.03); }
+    .btn { display:inline-block; padding:12px 22px; border-radius:8px; color:#fff; text-decoration:none; font-weight:600; }
+
+    hr { border:none; border-top:1px solid #eee; margin:36px 0; }
+
+    @media (max-width: 1000px) {
+      .app-screens { grid-template-columns: repeat(2,1fr); }
+      .feature-grid { grid-template-columns: repeat(2,1fr); }
+      .media-row { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 680px) {
+      .hero { height:260px; }
+      .hero-content h1 { font-size:22px; }
+      .app-screens { grid-template-columns: 1fr; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .feature-detail, .mode-block { grid-template-columns: 1fr !important; text-align:center; }
+      .feature-detail .image-content, .mode-block .mode-image { order:1; margin-top:20px; }
+      .mode-block .mode-text { text-align:center; }
+    }
+    /* Efekty tła dla kafelków z obrazkami */
+.feature-card {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Ciemna nakładka, żeby tekst był czytelny */
+.feature-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 0;
+}
+
+/* Treść ponad nakładką */
+.feature-card h4, .feature-card p {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+}
+
+/* Lekki efekt po najechaniu */
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+}
+.main-content {
+  position: relative;
+  z-index: 2;
+  background: #fff;
+  margin-top: -40px; /* dostosuj np. -80px lub -120px jeśli chcesz mocniejsze nachodzenie */
+  border-radius: 20px;
+  box-shadow: 1px 1px 10px rgb(194, 194, 194);
+  padding: 40px 20px;
+  
+}
+  </style>
+</head>
+<body>
+
+<header id="site-header"></header>
+
+<section class="hero">
+  <img src="images/aplikacja.jpg" alt="Pełna aplikacja Loxone" class="hero-img">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Pełna aplikacja i inteligentna kontrola</h1>
+    <p>Kontroluj dom w dowolnym miejscu — automatyzacja, uczenie się zachowań i multimedia w jednym narzędziu.</p>
+  </div>
+</section>
+
+<main class="main-content container">
+
+  <!-- Sekcja o aplikacji -->
+  <section class="feature-detail" style="display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 30px;">
+    <div class="text-content">
+      <p>Nasza aplikacja to centrum sterowania całym domem — od multimediów po zarządzanie energią i bezpieczeństwo. Zaprojektowana tak, by każdy użytkownik miał szybki dostęp do najważniejszych funkcji, a zaawansowani użytkownicy — pełną kontrolę nad regułami i automatyzacjami.</p>
+
+      <p>Inteligentna kontrola oznacza więcej niż zdalne włączanie urządzeń: aplikacja uczy się Twoich zwyczajów, proponuje automatyczne scenariusze i optymalizuje działanie urządzeń w oparciu o kontekst (pora dnia, obecność, cena energii, pogodę).</p>
+
+      <h3>Co otrzymujesz z pełną aplikacją Loxone:</h3>
+      <ul class="checklist">
+        <li>Centralny dashboard z live-danymi i szybkim podglądem stanu domu</li>
+        <li>Tworzenie i harmonogramowanie scen (kino, kolacja, poranek, tryb nocny)</li>
+        <li>Zaawansowane reguły automatyzacji (if-this-then-that + warunki zewnętrzne)</li>
+        <li>Uczenie się zachowań użytkownika i automatyczne rekomendacje</li>
+        <li>Zarządzanie multimediami: multiroom audio, integracja z systemami AV i synchronizacja światła z dźwiękiem</li>
+        <li>Pełna kontrola zdalna, geofencing i powiadomienia push</li>
+        <li>Zarządzanie dostępami i profile użytkowników</li>
+      </ul>
+
+      <p style="color:gray"><strong>Wskazówka:</strong> aplikacja obsługuje wiele kont użytkowników z rolami (administrator, gość, użytkownik), dzięki czemu możesz bezpiecznie udostępniać kontrolę nad domem.</p>
+    </div>
+    <div class="image-content" style="text-align:center;">
+      <img src="images/intercom.jpg" alt="Dashboard aplikacji Loxone" style="max-width:720px; width:100%; border-radius:20px; box-shadow:0 6px 18px rgba(0,0,0,0.12);">
+    </div>
+  </section>
+  <br><br>
+  <section class="app-screens">
+    <img src="images/sceny.jpg" style="height: 180px;" alt="Sceny i harmonogramy">
+    <img src="images/multiroom.jpg" style="height: 180px;" alt="Multimedia i multiroom">
+    <img src="images/automatyzacja2.png" style="height: 180px;" alt="Automatyzacje i reguły">
+  </section><br><br>
+
+  <div class="media-row">
+    <div>
+      <h3>Automatyzacje, które działają za Ciebie</h3>
+      <p>W aplikacji zdefiniujesz reguły, które wykonują się automatycznie — od prostych harmonogramów po złożone sekwencje zależne od czujników, danych pogodowych oraz cen energii.<br><br>
+
+System potrafi się uczyć: rozpoznaje, kiedy najczęściej oglądasz film, jakie ustawienia preferujesz przy kolacji czy jak dobierać natężenie światła do konkretnej aktywności.<br><br>
+
+Dzięki temu dom reaguje sam — wyłącza światła i obniża temperaturę, gdy wychodzisz, a po Twoim powrocie wita Cię odpowiednim oświetleniem i ulubioną muzyką. Automatyzacje mogą też uwzględniać pogodę: rolety zasłonią się w upał, a ogrzewanie dopasuje się do prognozy.<br><br>
+
+To inteligentny system, który myśli za Ciebie i zapewnia codzienny komfort bez potrzeby ciągłego sterowania.</p>
+    </div>
+    <div>
+      <img src="images/automatyzacja.jpg" alt="Automatyzacja" style="width:90%; border-radius:12px;">
+    </div>
+  </div>
+
+  <hr>
+
+  <h2 style="margin-bottom:6px;">Multimedia i efekty — pełna integracja</h2>
+  <p>Steruj muzyką i wideo w całym domu, synchronizuj oświetlenie z dźwiękiem lub stwórz efektowne sekwencje świetlne zsynchronizowane z filmami i koncertami.</p>
+
+  <div class="feature-grid">
+  <div class="feature-card" style="background-image:url('images/kino-show.jpg');">
+    <h4>Sceny „Kino” i „Show”</h4>
+    <p>Jednym kliknięciem przyciemnisz światła, opuścisz rolety i uruchomisz projektor.</p>
+  </div>
+
+  <div class="feature-card" style="background-image:url('images/multiroom.jpg');">
+    <h4>Multiroom audio</h4>
+    <p>Odtwarzaj różne źródła w każdym pomieszczeniu lub zsynchronizuj je w całym domu.</p>
+  </div>
+
+  <div class="feature-card" style="background-image:url('images/efekty-swietlne.webp');">
+    <h4>Efekty świetlne z dźwiękiem</h4>
+    <p>Synchronizacja światła z beatem muzyki — idealna na imprezy.</p>
+  </div>
+
+  <div class="feature-card" style="background-image:url('images/profile.png');">
+    <h4>Personalizowane profile</h4>
+    <p>Ustawienia przypisane do profili domowników.</p>
+  </div>
+
+  <div class="feature-card" style="background-image:url('images/zdalna-obsluga.png');">
+    <h4>Bezpieczny zdalny dostęp</h4>
+    <p>Szyfrowane połączenia, powiadomienia push, pełna kontrola.</p>
+  </div>
+
+  <div class="feature-card" style="background-image:url('images/integracja.jpg');">
+    <h4>Integracje i API</h4>
+    <p>Współpraca z systemami alarmowymi, asystentami głosowymi i urządzeniami smart home.</p>
+  </div>
+</div>
+
+  <hr>
+
+  <section>
+    <h3>Zaawansowane funkcje inteligentnej kontroli</h3>
+    <ul class="checklist" style="margin-top:12px;">
+      <li>Uczenie maszynowe — automatyczne dopasowanie harmonogramów i rekomendacje oszczędzania energii.</li>
+      <li>Geofencing — automatyczne przełączanie trybów przy wejściu/wyjściu domownika.</li>
+      <li>Powiadomienia i akcje warunkowe — np. wyłączenie urządzeń przy wykryciu wycieku lub podejrzanej aktywności.</li>
+      <li>Harmonogramy sezonowe i scenariusze świąteczne.</li>
+      <li>Aktualizacje OTA — system zawsze aktualny i bezpieczny.</li>
+    </ul>
+  </section>
+
+  <hr>
+
+  <section>
+    <h3>Bezpieczeństwo i prywatność</h3>
+    <p>System oferuje szyfrowane połączenia, kontrolę uprawnień i możliwość lokalnej pracy bez chmury — decyzja o sposobie wdrożenia należy do Ciebie.</p>
+  </section>
+
+  <!-- NOWA SEKCJA O DOSTĘPIE -->
+  <hr>
+  <section style="margin-bottom:30px;">
+    <h3>Inteligentny dostęp — kontrola drzwi i wejść</h3>
+    <p>System dostępu Loxone pozwala na łatwe, bezkluczowe zarządzanie wejściem do domu lub firmy — dzięki klawiaturze kodowej, tagom NFC oraz integracji aplikacji mobilnej.</p>
+    <ul class="checklist" style="margin-top:12px;">
+      <li>Nieograniczona liczba użytkowników oraz punktów dostępowych (drzwi, bramy, szafki).</li>
+      <li>Zarządzanie uprawnieniami w czasie — przydzielanie kodów lub tagów na określony czas.</li>
+      <li>Funkcja „Loxone Trust” — wspólny dostęp między wieloma lokalizacjami.</li>
+      <li>Integracja z wideodomofonem („Loxone Intercom”) — podgląd i otwarcie drzwi z aplikacji.</li>
+      <li>Dezaktywacja zagubionych tagów lub kodów w ciągu minut bez wymiany zamka.</li>
+    </ul>
+    <div class="media-row" style="margin-top:20px;">
+      <div><img src="images/zarzadzanie.jpg" alt="NFC Code Touch – klawiatura kodowa i NFC"></div>
+      <div><img src="images/poziomy-dostepu.png" alt="Loxone Intercom – Poziomy dostępu w aplikacji"></div>
+    </div>
+
+    <hr style="border-top:1px solid #eee; margin:40px 0;"> 
+    <div class="media-row" style="margin-top:40px;">
+      <div>
+        <h3>Loxone Trust</h3>
+        <p>Rewolucyjna funkcja oferuje globalne zarządzanie danymi użytkowników w różnych lokalizacjach. Szczególnie skorzystają na tym duże, wielooddziałowe firmy oraz sieci sklepów i restauracji. Pracownik z oddziału może w razie potrzeby użyć swojego breloka lub karty NFC, aby uzyskać dostęp do budynku centrali.</p>
+      </div>
+      <div>
+        <img src="images/loxone-trust.jpg" alt="Raporty i historia dostępu Loxone" style="width:100%; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.1);">
+      </div>
+    </div>
+    <p style="color:gray; margin-top:12px;"><strong>Wskazówka:</strong> W systemach wielolokalizacyjnych aktywuj funkcję Loxone Trust – ułatwia zarządzanie dostępem i eliminuje konieczność używania wielu kart lub tagów.</p>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Chcesz pełną kontrolę nad swoim domem?</h2>
+    <p>Zaprojektujemy i wdrożymy aplikację dopasowaną do Twoich potrzeb — od prostych scen po zaawansowane, uczące się reguły automatyzacji.</p>
+    <a class="btn" style="background-color:#2f9e44;" href="kontakt.html">Umów bezpłatną konsultację</a>
+  </section>
+
+</main>
+
+<footer id="site-footer"></footer>
+<script src="script.js"></script>
+</body>
+</html>
