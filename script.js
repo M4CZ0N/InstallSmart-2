@@ -113,5 +113,6 @@ document.querySelectorAll('.mobile-menu a').forEach(link => {
   } else {
     preparePlaceholders();
   }
+  
 
 })();
