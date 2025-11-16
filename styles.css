@@ -717,3 +717,11 @@ h2 {
   display: flex;
   align-items: center; 
 }
+@media (max-width: 600px) {
+  .nav {
+    display: none !important; /* wymusza ukrycie menu */
+  }
+  .hamburger {
+    display: block !important; /* pokazuje hamburger */
+  }
+}
