@@ -656,7 +656,7 @@ h2 {
   .nav { display: none; }
   .hamburger { display: block; }
 }
-@media (max-width: 1200px) and (min-width: 601px) {
+@media (max-width: 1100px) and (min-width: 601px) {
   .header-inner {
     flex-direction: column; /* ustawienie logo i menu w kolumnie */
     align-items: center;    /* wyśrodkowanie */
